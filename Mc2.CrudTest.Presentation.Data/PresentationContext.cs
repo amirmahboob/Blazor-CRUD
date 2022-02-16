@@ -28,7 +28,13 @@ namespace Mc2.CrudTest.Presentation.Data
         {
             modelBuilder.Entity<Customer>(entity =>
             {
-                entity.Property(e => new { e.FirstName, e.LastName, e.DateOfBirth, e.PhoneNumber, e.Email, e.BankAccountNumber }).IsRequired();
+                entity.Property(e => e.FirstName).IsRequired();
+                entity.Property(e => e.LastName).IsRequired();
+                entity.Property(e => e.DateOfBirth).IsRequired();
+                entity.Property(e => e.PhoneNumber).IsRequired();
+                entity.Property(e => e.Email).IsRequired();
+                entity.Property(e => e.BankAccountNumber).IsRequired();
+                //entity.Property(e => new { e.FirstName, e.LastName, e.DateOfBirth, e.PhoneNumber, e.Email, e.BankAccountNumber }).IsRequired();
                 entity.HasIndex(e => new { e.FirstName, e.LastName, e.DateOfBirth }).IsUnique();
                 entity.HasIndex(e => e.Email).IsUnique();
             });
