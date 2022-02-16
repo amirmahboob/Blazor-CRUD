@@ -8,7 +8,9 @@
 
 @*@if (_forecasts == null)*@
 @if (1 == 2)
+
 {
+
     <p><em>Loading...</em></p>
 }
 else
@@ -23,15 +25,15 @@ else
             </tr>
         </thead>
         <tbody>
-           @* @foreach (WeatherForecast forecast in _forecasts)
-            {
+            @* @foreach (WeatherForecast forecast in _forecasts)
+                {
                 <tr>
-                    <td>@forecast.Date.ToShortDateString()</td>
-                    <td>@forecast.TemperatureC.ToString()</td>
-                    <td>@forecast.TemperatureF.ToString()</td>
-                    <td>@forecast.Summary</td>
+                <td>@forecast.Date.ToShortDateString()</td>
+                <td>@forecast.TemperatureC.ToString()</td>
+                <td>@forecast.TemperatureF.ToString()</td>
+                <td>@forecast.Summary</td>
                 </tr>
-            }*@
+                }*@
         </tbody>
     </table>
 }

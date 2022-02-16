@@ -30,6 +30,7 @@ namespace Mc2.CrudTest.Presentation.Server.Controllers
         }
 
         [HttpGet]
+        [Route("Get")]
         public async Task<IEnumerable<CustomerViewModel>> Get()
         {
             var customers = await _customerService.GetAll();
