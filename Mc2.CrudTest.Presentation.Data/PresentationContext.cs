@@ -26,6 +26,13 @@ namespace Mc2.CrudTest.Presentation.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Customer>(entity =>
+            {
+                entity.Property(e => new { e.FirstName, e.LastName, e.DateOfBirth, e.PhoneNumber, e.Email, e.BankAccountNumber }).IsRequired();
+                entity.HasIndex(e => new { e.FirstName, e.LastName, e.DateOfBirth }).IsUnique();
+                entity.HasIndex(e => e.Email).IsUnique();
+            });
+
             base.OnModelCreating(modelBuilder);
         }
 

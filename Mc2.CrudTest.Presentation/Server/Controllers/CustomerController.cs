@@ -36,8 +36,8 @@ namespace Mc2.CrudTest.Presentation.Server.Controllers
             var result = customers.Select(r => new CustomerViewModel
             {
                 Id = r.Id,
-                Firstname = r.Firstname,
-                Lastname = r.Lastname,
+                FirstName = r.FirstName,
+                LastName = r.LastName,
                 DateOfBirth = r.DateOfBirth,
                 PhoneNumber = r.PhoneNumber,
                 Email = r.Email,
