@@ -69,7 +69,7 @@ namespace Mc2.CrudTest.Presentation.Server.Controllers
             }
             catch (Exception ex)
             {
-                return null;
+                throw new Exception(ex.Message);
             }
         }
 
@@ -87,7 +87,7 @@ namespace Mc2.CrudTest.Presentation.Server.Controllers
             }
             catch (Exception ex)
             {
-                return null;
+                throw new Exception(ex.Message);
             }
         }
 
@@ -104,7 +104,7 @@ namespace Mc2.CrudTest.Presentation.Server.Controllers
             }
             catch (Exception ex)
             {
-                return null;
+                throw new Exception(ex.Message);
             }
         }
 
@@ -121,7 +121,7 @@ namespace Mc2.CrudTest.Presentation.Server.Controllers
             }
             catch (Exception ex)
             {
-                return null;
+                throw new Exception(ex.Message);
             }
         }
     }
