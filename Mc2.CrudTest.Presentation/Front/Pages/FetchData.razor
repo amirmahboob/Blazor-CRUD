@@ -1,14 +1,12 @@
 ﻿@page "/fetchdata"
-@*@using Mc2.CrudTest.Domain*@
+@using Mc2.CrudTest.Shared
 @inject HttpClient _http
 
-<h1>Weather forecast</h1>
+<h1>Customres</h1>
 
 <p>This component demonstrates fetching data from the server.</p>
 
-@*@if (_forecasts == null)*@
-@if (1 == 2)
-
+@if (_customers == null)
 {
 
     <p><em>Loading...</em></p>
@@ -18,32 +16,36 @@ else
     <table class="table">
         <thead>
             <tr>
-                <th>Date</th>
-                <th>Temp. (C)</th>
-                <th>Temp. (F)</th>
-                <th>Summary</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Date Of Birth</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Bank Account Number</th>
             </tr>
         </thead>
         <tbody>
-            @* @foreach (WeatherForecast forecast in _forecasts)
-                {
+            @foreach (CustomerViewModel customer in _customers)
+            {
                 <tr>
-                <td>@forecast.Date.ToShortDateString()</td>
-                <td>@forecast.TemperatureC.ToString()</td>
-                <td>@forecast.TemperatureF.ToString()</td>
-                <td>@forecast.Summary</td>
+                    <td>@customer.FirstName</td>
+                    <td>@customer.LastName</td>
+                    <td>@customer.DateOfBirth</td>
+                    <td>@customer.PhoneNumber</td>
+                    <td>@customer.Email</td>
+                    <td>@customer.BankAccountNumber</td>
                 </tr>
-                }*@
+            }
         </tbody>
     </table>
 }
 
 @code {
-    //private WeatherForecast[] _forecasts;
+    private List<CustomerViewModel> _customers;
 
-    //protected override async Task OnInitializedAsync()
-    //{
-    //    _forecasts = await _http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
-    //}
+    protected override async Task OnInitializedAsync()
+    {
+        _customers = await _http.GetFromJsonAsync<List<CustomerViewModel>>("Customer/Get");
+    }
 
 }

@@ -30,6 +30,17 @@ namespace Mc2.CrudTest.Presentation.Server
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy", builder =>
+                {
+                    builder
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader();
+                });
+            });
+
             #region Auto Mapper Configurations
 
             // Auto Mapper Configurations
@@ -94,7 +105,7 @@ namespace Mc2.CrudTest.Presentation.Server
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseCors("CorsPolicy");
             app.UseSwagger();
             app.UseSwaggerUI(s => s.SwaggerEndpoint(swaggerEndPoint, "PresentationAPI v1"));
 

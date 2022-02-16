@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 namespace Mc2.CrudTest.Presentation.Server.Controllers
 {
     [AllowAnonymous]
+    [Route("[controller]")]
     public class CustomerController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -44,7 +45,7 @@ namespace Mc2.CrudTest.Presentation.Server.Controllers
                 Email = r.Email,
                 BankAccountNumber = r.BankAccountNumber
             });
-            return result;
+            return result.ToList();
         }
 
         [HttpGet]
