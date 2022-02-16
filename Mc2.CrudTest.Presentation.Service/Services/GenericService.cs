@@ -15,23 +15,23 @@ namespace Mc2.CrudTest.Presentation.Service.Services
             Uow = uow;
             Entities = Uow.Set<TEntity>();
         }
-        public TEntity Add(TEntity entity)
+        public virtual TEntity Add(TEntity entity)
         {
             return Entities.Add(entity).Entity;
         }
 
-        public void Update(TEntity entity)
+        public virtual void Update(TEntity entity)
         {
             Uow.MyChangeTracker(EntityState.Detached);
             Entities.Update(entity);
         }
 
-        public void Delete(TEntity entity)
+        public virtual void Delete(TEntity entity)
         {
             Entities.Remove(entity);
         }
 
-        public TEntity Find(Func<TEntity, bool> predicate, params Expression<Func<TEntity, object>>[] includes)
+        public virtual TEntity Find(Func<TEntity, bool> predicate, params Expression<Func<TEntity, object>>[] includes)
         {
             IQueryable<TEntity> query = Entities;
             foreach (Expression<Func<TEntity, object>> include in includes)
@@ -39,7 +39,7 @@ namespace Mc2.CrudTest.Presentation.Service.Services
             return query.FirstOrDefault(predicate);
         }
 
-        public async Task<IList<TEntity>> GetAll(Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null, params Expression<Func<TEntity, object>>[] includes)
+        public virtual async Task<IList<TEntity>> GetAll(Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null, params Expression<Func<TEntity, object>>[] includes)
         {
             IQueryable<TEntity> query = Entities;
             foreach (Expression<Func<TEntity, object>> include in includes)
@@ -49,7 +49,7 @@ namespace Mc2.CrudTest.Presentation.Service.Services
             return await query.ToListAsync();
         }
 
-        public async Task<IList<TEntity>> GetAll(Expression<Func<TEntity, bool>> predicate, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null, params Expression<Func<TEntity, object>>[] includes)
+        public virtual async Task<IList<TEntity>> GetAll(Expression<Func<TEntity, bool>> predicate, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null, params Expression<Func<TEntity, object>>[] includes)
         {
             IQueryable<TEntity> query = Entities;
             foreach (Expression<Func<TEntity, object>> include in includes)
