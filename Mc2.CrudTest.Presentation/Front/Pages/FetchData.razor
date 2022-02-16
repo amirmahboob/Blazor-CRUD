@@ -1,12 +1,13 @@
 ﻿@page "/fetchdata"
-@using Mc2.CrudTest.Domain
+@*@using Mc2.CrudTest.Domain*@
 @inject HttpClient _http
 
 <h1>Weather forecast</h1>
 
 <p>This component demonstrates fetching data from the server.</p>
 
-@if (_forecasts == null)
+@*@if (_forecasts == null)*@
+@if (1 == 2)
 {
     <p><em>Loading...</em></p>
 }
@@ -22,7 +23,7 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (WeatherForecast forecast in _forecasts)
+           @* @foreach (WeatherForecast forecast in _forecasts)
             {
                 <tr>
                     <td>@forecast.Date.ToShortDateString()</td>
@@ -30,17 +31,17 @@ else
                     <td>@forecast.TemperatureF.ToString()</td>
                     <td>@forecast.Summary</td>
                 </tr>
-            }
+            }*@
         </tbody>
     </table>
 }
 
 @code {
-    private WeatherForecast[] _forecasts;
+    //private WeatherForecast[] _forecasts;
 
-    protected override async Task OnInitializedAsync()
-    {
-        _forecasts = await _http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
-    }
+    //protected override async Task OnInitializedAsync()
+    //{
+    //    _forecasts = await _http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
+    //}
 
 }

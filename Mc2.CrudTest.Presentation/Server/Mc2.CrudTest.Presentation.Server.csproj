@@ -1,14 +1,26 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="5.0.11" />
+    <Compile Remove="Controllers\WeatherForecastController.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="5.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.2" />
+    <PackageReference Include="StructureMap" Version="4.7.1" />
+    <PackageReference Include="StructureMap.Microsoft.DependencyInjection" Version="2.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Mc2.CrudTest.Presentation.Data\Mc2.CrudTest.Presentation.Data.csproj" />
+    <ProjectReference Include="..\..\Mc2.CrudTest.Presentation.DomainClasses\Mc2.CrudTest.Presentation.Domain.csproj" />
+    <ProjectReference Include="..\..\Mc2.CrudTest.Presentation.Service\Mc2.CrudTest.Presentation.Service.csproj" />
     <ProjectReference Include="..\Shared\Mc2.CrudTest.Shared.csproj" />
     <ProjectReference Include="..\Front\Mc2.CrudTest.Presentation.Front.csproj" />
   </ItemGroup>
